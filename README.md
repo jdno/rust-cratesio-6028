@@ -10,6 +10,19 @@ crates larger than 20MB cannot be served with Fastly[^1] without enabling
 Without this feature, the CDN returns a `503 Response object too large` error as
 a response.
 
+## Usage
+
+The `data.bin` file in the crate is used to increase the size of the crate past
+the limit for Fastly. It can be set to an arbitrary size with the following
+command:
+
+```shell
+dd if=/dev/zero of=output.dat  bs=1m  count=24
+```
+
+`count` controls how many blocks of size `bs` are written to the file. In the
+above example, the file is set to 24MB.
+
 ## License
 
 Licensed under either of
